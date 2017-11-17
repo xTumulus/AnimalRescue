@@ -23,7 +23,9 @@ angular.module('animalRescue', [])
         console.log(data + 'from the controller');
         for(var animal in data) {
           nml = data[animal];
-          $scope.animalList.push(nml);
+          if(!$scope.animalList.includes(nml)) {
+            $scope.animalList.push(nml);
+          }
         }
       })
     };
