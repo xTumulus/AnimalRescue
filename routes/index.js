@@ -11,6 +11,7 @@ var animalSchema = new mongoose.Schema({
 
 animalSchema.methods.feed = function(cb) {
   this.health += 33;
+  console.log(this.health);
   if(this.health > 100) {
     this.health = 100;
   }
@@ -19,13 +20,14 @@ animalSchema.methods.feed = function(cb) {
 
 animalSchema.methods.play = function(cb) {
   this.happiness += 33;
+  console.log(this.happiness);
   if(this.happiness > 100) {
     this.happiness = 100;
   }
   this.save(cb);
 };
 
-animalSchema.methods.decrease = function(cb) {
+animalSchema.methods.decreaseAnimal = function(cb) {
   this.happiness -= 33;
   if(this.happiness < 1) {
     console.log('animal died in model');

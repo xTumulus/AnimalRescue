@@ -38,7 +38,7 @@ angular.module('animalRescue', [])
       });
     };
 
-    $scope.decrease = setInterval(function(animal) {
+    $scope.decreaseAnimal = setInterval(function(animal) {
       return $http.put('/animals/' + animal._id + '/decrease')
       .success(function(data){
          console.log("animal dying");
