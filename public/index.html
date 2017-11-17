@@ -35,8 +35,9 @@
       <div id="animals"></div>
 
       <div ng-repeat="animal in animalList">
-        <span class="glyphicon glyphicon-thumbs-up" ng-click="feed(animal)">FEED</span>
-        <span class="glyphicon glyphicon-thumbs-up" ng-click="play(animal)">PLAY</span>
+        <button ng-click="feed(animal)">FEED</button>
+        <button ng-click="play(animal)">PLAY</button>
+        <i class="material-icons">pets</i>
         <p>{{animal.name}}</p>
         <p>health: {{animal.health}}</p>
         <p>happiness: {{animal.happiness}}</p>
