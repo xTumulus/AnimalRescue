@@ -18,7 +18,9 @@
         <button type="submit">Add Animal</button>
       </form>
 
-      <!-- <div> {{test}} </div> -->
+      <button ng-click="getAnimalList()">Show Animals in Residence</button>
+
+      <div id="animals"></div>
 
       <div ng-repeat="animal in animalList">
         <span class="glyphicon glyphicon-thumbs-up" ng-click="feed(animal)">FEED</span>

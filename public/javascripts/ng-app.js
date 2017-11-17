@@ -14,6 +14,19 @@ angular.module('animalRescue', [])
       });
       $scope.formContent = '';
     };
+    
+    $scope.getAnimalList= function() {
+      $.getJSON('animal', function(data) {
+        console.log(data);
+        var everything = "<ul>";
+        for(var comment in data) {
+          nml = data[comment];
+          everything += "<li> Name: " + nml.name + "</li>";
+        }
+        everything += "</ul>";
+        $("#animals").html(everything);
+      })
+    };
 
     $scope.feed = function(animal) {
       return $http.put('/animals/' + animal._id + '/feed')

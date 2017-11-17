@@ -7,6 +7,7 @@ var animalSchema = new mongoose.Schema({
   name: String,
   health: {type: Number, default: 100},
   happiness: {type: Number, default: 100},
+  days: 0,
 });
 
 animalSchema.methods.feed = function(cb) {
@@ -38,6 +39,12 @@ animalSchema.methods.decreaseAnimal = function(cb) {
     console.log('animal died in model');
     //some function to kill it?
   }
+  this.days += 1;
+  if(this.days >= 30) {
+    console.log('animal rescued and returned to wild');
+    //some function to log that it was saved
+    //still call delete
+  }
   this.save(cb);
 };
 
@@ -50,12 +57,16 @@ db.once('open', function () {
   console.log('Connected to db');
 });
 
-// router.get('/animals', function(req, res, next) {
-//   animal.find(function(err, comments){
-//     if(err){ return next(err); }
-//     res.json(comments);
-//   });
-// });
+router.get('/animals', function(req, res, next){
+  console.log('In GET animals route');
+  animal.find(function(err,animalList) {
+    if (err) return console.error(err);
+    else {
+      console.log(animalList);
+    }
+    res.json(animalList);
+  })
+});
 
 router.post('/animals', function(req, res, next) {
   console.log(req.body);
