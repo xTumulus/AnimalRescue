@@ -59,9 +59,11 @@ angular.module('animalRescue', [])
       $scope.animalList.forEach(function(animal){
         $http.put('/animals/' + animal._id + '/decreaseAnimal')
           .success(function(d){
-            if(count++ === $scope.animalList.length){
-              $scope.getAnimalList();
-            }
+            $scope.getAnimalList();
+            
+            // if(count++ === $scope.animalList.length){
+            //   console.log('Getting animals');
+            // }
           });
       });
         // return $http.put('/animals/decreaseAnimal',animals)
