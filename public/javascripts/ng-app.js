@@ -21,11 +21,7 @@ angular.module('animalRescue', [])
       return $http.get('/animals/')
       .success(function(data) {
         console.log(data + 'from the controller');
-        $scope.animalList = [];
-        for(var animal in data) {
-          nml = data[animal];
-          $scope.animalList.push(nml);
-        }
+        $scope.animalList = data;
       })
     };
 
@@ -56,9 +52,9 @@ angular.module('animalRescue', [])
 
     $scope.decreaseAnimal = setInterval(function() {
       $scope.animalList.forEach(function(animal){
-        return $http.put('/animals/' + animal._id + '/decreaseAnimal')
+        return $http.put('/animals/decrease')
         .success(function(data){
-          
+          $scope.animalList = data;
         });
       })
 

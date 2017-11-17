@@ -113,6 +113,24 @@ router.put('/animals/:animal/decreaseAnimal', function(req, res, next) {
   });
 });
 
+router.put('/animals/decrease', function(req, res, next) {
+  var count;
+  animal.find(function(err,animals) {
+    animals.forEach(function(animal,index){
+      animal.decreaseAnimal(function(err, animal){
+        if(err) { return next(err); }
+        if(count++ === animals.length){
+          res.json(animals);
+        }
+      });
+    })
+  })
+  // req.animal.decreaseAnimal(function(err, animal){
+  //   if (err) { return next(err); }
+  //   res.json(animal);
+  // });
+});
+
 router.delete('/animals/:animal', function(req, res) {
   console.log("in Delete");
   req.animal.remove();
