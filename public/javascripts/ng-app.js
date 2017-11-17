@@ -20,6 +20,7 @@ angular.module('animalRescue', [])
       .success(function(data){
          console.log("animal fed");
          animal.health += 33;
+         console.log(animal.health);
          if(animal.health > 100) {
            animal.health = 100;
          }
@@ -32,6 +33,7 @@ angular.module('animalRescue', [])
       .success(function(data){
          console.log("animal played with");
          animal.happiness += 33;
+         console.log(animal.happiness);
          if(animal.happiness > 100) {
            animal.happiness = 100;
          }
