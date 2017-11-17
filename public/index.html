@@ -10,41 +10,38 @@
 
 </head>
 <body ng-app="animalRescue" ng-controller="MainCtrl">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <div class="page-header">
-        <h1>Animal Rescue </h1>
-        <div class="rescue-counter">
-          <h4>Animals Rescued to Date</h4>
-          <div class="number-box">{{ animalsSaved }}</div>
-        </div>
-      </div>
-
-      <div class="intro">
-        <p> This is an animal rescue simulator. You can bring sick animals to the shelter by adding an animal below</p>
-      </div>
-
-      <form ng-submit="addAnimal()" style = "margin-top30px;">
-        <h3>Bring in an Animal:</h3>
-        <input type="text" ng-model="formContent"></input>
-        <button type="submit">Add Animal</button>
-      </form>
-
-      <button ng-click="getAnimalList()">Show Animals in Residence</button>
-
-      <div class="animal-container">
-        <div ng-repeat="animal in animalList">
-          <img src="pets_icon.png" alt="pawprint">
-          <p>{{animal.name}}</p>
-          <p>health: {{animal.health}}</p>
-          <p>happiness: {{animal.happiness}}</p>
-          <p>days in recovery: {{animal.days}}</p>
-          <button ng-click="feed(animal)">FEED</button>
-          <button ng-click="play(animal)">PLAY</button>
-          <!-- <i class="material-icons">pets</i> -->
-        </div>
-      </div>
+  <div class="page-header">
+    <h1>Animal Rescue </h1>
+    <div class="rescue-counter">
+      <h4>Animals Rescued to Date</h4>
+      <div class="number-box">{{ animalsSaved }}</div>
     </div>
   </div>
+
+  <div class="intro">
+    <p> This is an animal rescue simulator. You can bring sick animals to the shelter by adding an animal below</p>
+  </div>
+
+  <form ng-submit="addAnimal()" style = "margin-top30px;">
+    <h3>Bring in an Animal:</h3>
+    <input type="text" ng-model="formContent"></input>
+    <button type="submit">Add Animal</button>
+  </form>
+
+  <button ng-click="getAnimalList()">Show Animals in Residence</button>
+
+  <div class="animal-container">
+    <div ng-repeat="animal in animalList">
+      <img src="pets_icon.png" alt="pawprint">
+      <p>{{animal.name}}</p>
+      <p>health: {{animal.health}}</p>
+      <p>happiness: {{animal.happiness}}</p>
+      <p>days in recovery: {{animal.days}}</p>
+      <button ng-click="feed(animal)">FEED</button>
+      <button ng-click="play(animal)">PLAY</button>
+      <!-- <i class="material-icons">pets</i> -->
+    </div>
+  </div>
+
 </body>
 </html>
