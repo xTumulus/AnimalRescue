@@ -15,6 +15,7 @@ angular.module('animalRescue', [])
         days: 0,
       });
       $scope.formContent = '';
+      $scope.getAnimalList();
     };
 
     $scope.getAnimalList = function() {
@@ -34,6 +35,7 @@ angular.module('animalRescue', [])
          if(animal.health > 100) {
            animal.health = 100;
          }
+         $scope.getAnimalList();
       });
     };
 
@@ -47,13 +49,15 @@ angular.module('animalRescue', [])
          if(animal.happiness > 100) {
            animal.happiness = 100;
          }
+         $scope.getAnimalList();
       });
     };
 
     $scope.decreaseAnimal = setInterval(function() {
-        return $http.put('/animals/decrease')
+        return $http.put('/animals/decreaseAnimal')
         .success(function(data){
           $scope.animalList = data;
+          $scope.getAnimalList();
         });
     }, 10000);
 
