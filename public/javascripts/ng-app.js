@@ -10,11 +10,12 @@ angular.module('animalRescue', [])
       $scope.create({
         name: $scope.formContent,
         health: 100,
-        happiness: 100
+        happiness: 100,
+        days: 0,
       });
       $scope.formContent = '';
     };
-    
+
     $scope.getAnimalList= function() {
       $.getJSON('animal', function(data) {
         console.log(data);
@@ -66,6 +67,11 @@ angular.module('animalRescue', [])
          if(animal.health < 1) {
            console.log('animal died');
            //call some dead animal function
+         }
+         animal.days += 1;
+         if(animal.days >= 30) {
+           console.log('animal saved');
+           //some function to delete and add to the number saved
          }
       });
     }, 10000);

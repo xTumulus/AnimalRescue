@@ -1,6 +1,22 @@
+/* COLORS
+$grey: rgba(190, 187, 187, 1);
+$blue: rgba(81, 113, 165, 1);
+$white: rgba(246, 244, 210, 1);
+$yellow: rgba(238, 243, 106, 1);
+$green: rgba(129, 244, 153, 1); 
+*/
+/* FONTS 
+font-family: 'Luckiest Guy', cursive;
+font-family: 'Boogaloo', cursive; 
+*/
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgba(246, 244, 210, 1);
+  font-family: 'Boogaloo', cursive; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Luckiest Guy', cursive;
 }
 
 a {
