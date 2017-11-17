@@ -21,11 +21,10 @@ angular.module('animalRescue', [])
       return $http.get('/animals/')
       .success(function(data) {
         console.log(data + 'from the controller');
+        $scope.animalList = [];
         for(var animal in data) {
           nml = data[animal];
-          if(!$scope.animalList.includes(nml)) {
-            $scope.animalList.push(nml);
-          }
+          $scope.animalList.push(nml);
         }
       })
     };
@@ -55,27 +54,37 @@ angular.module('animalRescue', [])
       });
     };
 
-    $scope.decreaseAnimal = setInterval(function(animal) {
-      return $http.put('/animals/' + animal._id + '/decrease')
-      .success(function(data){
-         console.log("animal dying");
-         animal.happiness -= 33;
-         if(animal.happiness < 1) {
-           console.log('animal died');
-           $scope.delete(animal);
-          }
-         animal.health -= 33;
-         if(animal.health < 1) {
-           console.log('animal died');
-           $scope.delete(animal);
-         }
-         animal.days += 1;
-         if(animal.days >= 30) {
-           console.log('animal saved');
-           $scope.animalsSaved += 1;
-           $scope.delete(animal);           
-         }
-      });
+    $scope.decreaseAnimal = setInterval(function() {
+      $scope.animalList.forEach(function(animal){
+        return $http.put('/animals/' + animal._id + '/decreaseAnimal')
+        .success(function(data){
+          
+        });
+      })
+
+      // return $http.put('/animals/' + animal._id + '/decrease')
+      // .success(function(data){
+      //   for(var nml in data) {
+      //     Animal = data[nml];
+      //     console.log("animal dying");
+      //     animal.happiness -= 33;
+      //     if(animal.happiness < 1) {
+      //       console.log('animal died');
+      //       $scope.delete(animal);
+      //      }
+      //     animal.health -= 33;
+      //     if(animal.health < 1) {
+      //       console.log('animal died');
+      //       $scope.delete(animal);
+      //     }
+      //     animal.days += 1;
+      //     if(animal.days >= 30) {
+      //       console.log('animal saved');
+      //       $scope.animalsSaved += 1;
+      //       $scope.delete(animal);           
+      //     }
+      //   }
+      // });
     }, 10000);
 
     // $scope.getAll = function() {
