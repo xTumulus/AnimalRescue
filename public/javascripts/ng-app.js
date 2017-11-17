@@ -55,11 +55,20 @@ angular.module('animalRescue', [])
 
     $scope.decreaseAnimal = setInterval(function() {
       console.log('running decreaseAnimal');
-        return $http.put('/animals/decreaseAnimal',animals)
-        .success(function(data){
-          $scope.animalList = data;
-          $scope.getAnimalList();
-        });
+      var count = 0;
+      $scope.animalList.forEach(function(animal){
+        $http.put('/animals/' + animal._id + '/decreaseAnimal')
+          .success(function(d){
+            if(count++ === $scope.animalList.length){
+              $scope.getAnimalList();
+            }
+          });
+      });
+        // return $http.put('/animals/decreaseAnimal',animals)
+        // .success(function(data){
+        //   $scope.animalList = data;
+        //   $scope.getAnimalList();
+        // });
     }, 10000);
 
     $scope.create = function(animal) {
