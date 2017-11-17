@@ -3,6 +3,7 @@ angular.module('animalRescue', [])
   '$scope', '$http',
   function($scope, $http){
     $scope.animalList = [];
+    $scope.animalsSaved; 
 
     $scope.addAnimal = function() {
       if($scope.formContent === '') { return; }
@@ -62,17 +63,18 @@ angular.module('animalRescue', [])
          animal.happiness -= 33;
          if(animal.happiness < 1) {
            console.log('animal died');
-           //call some dead animal function
-         }
+           $scope.delete(animal);
+          }
          animal.health -= 33;
          if(animal.health < 1) {
            console.log('animal died');
-           //call some dead animal function
+           $scope.delete(animal);
          }
          animal.days += 1;
          if(animal.days >= 30) {
            console.log('animal saved');
-           //some function to delete and add to the number saved
+           $scope.animalsSaved += 1;
+           $scope.delete(animal);           
          }
       });
     }, 10000);
