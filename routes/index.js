@@ -17,7 +17,6 @@ router.post('/animals', function(req, res, next) {
   tempAnimal.save(function(err, tempAnimal){
     if(err){ return next(err); }
     res.json(tempAnimal);
-    res.sendStatus(200);
   });
 });
 
