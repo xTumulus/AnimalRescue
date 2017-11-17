@@ -24,7 +24,7 @@ angular.module('animalRescue', [])
         // var everything = "<div class='animals-container'>";
         for(var animal in data) {
           nml = data[animal];
-          animalList.push(nml);
+          $scope.animalList.push(nml);
           // everything += "<div class='animal'> <p>Name: " + nml.name + "</p> <p>" +nml.;
         }
         // everything += "</ul>";
