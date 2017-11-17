@@ -32,15 +32,17 @@
 
       <button ng-click="getAnimalList()">Show Animals in Residence</button>
 
-      <div ng-repeat="animal in animalList" class="animal-container">
-        <img src="pets_icon.png" alt="pawprint">
-        <p>{{animal.name}}</p>
-        <p>health: {{animal.health}}</p>
-        <p>happiness: {{animal.happiness}}</p>
-        <p>days in recovery: {{animal.days}}</p>
-        <button ng-click="feed(animal)">FEED</button>
-        <button ng-click="play(animal)">PLAY</button>
-        <!-- <i class="material-icons">pets</i> -->
+      <div class="animal-container">
+        <div ng-repeat="animal in animalList">
+          <img src="pets_icon.png" alt="pawprint">
+          <p>{{animal.name}}</p>
+          <p>health: {{animal.health}}</p>
+          <p>happiness: {{animal.happiness}}</p>
+          <p>days in recovery: {{animal.days}}</p>
+          <button ng-click="feed(animal)">FEED</button>
+          <button ng-click="play(animal)">PLAY</button>
+          <!-- <i class="material-icons">pets</i> -->
+        </div>
       </div>
     </div>
   </div>
