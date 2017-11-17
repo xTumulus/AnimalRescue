@@ -12,7 +12,7 @@ var animal = mongoose.model('animal');
 
 router.post('/animals', function(req, res, next) {
   var tempAnimal = new animal(req.body);
-  animal.save(function(err, tempAnimal){
+  tempAnimal.save(function(err, tempAnimal){
     if(err){ return next(err); }
     res.json(tempAnimal);
   });
