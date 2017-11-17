@@ -11,7 +11,9 @@ var animal = mongoose.model('animal');
 // });
 
 router.post('/animals', function(req, res, next) {
+  console.log(req.body);
   var tempAnimal = new animal(req.body);
+  console.log(tempAnimal);
   animal.save(function(err, tempAnimal){
     if(err){ return next(err); }
     res.json(tempAnimal);
