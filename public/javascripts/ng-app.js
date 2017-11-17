@@ -56,11 +56,10 @@ angular.module('animalRescue', [])
     $scope.decreaseAnimal = setInterval(function() {
       console.log('running decreaseAnimal');
       var count = 0;
+      $scope.getAnimalList();
       $scope.animalList.forEach(function(animal){
         $http.put('/animals/' + animal._id + '/decreaseAnimal')
-          .success(function(d){
-            $scope.getAnimalList();
-            
+          .success(function(d){      
             // if(count++ === $scope.animalList.length){
             //   console.log('Getting animals');
             // }

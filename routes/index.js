@@ -32,7 +32,7 @@ animalSchema.methods.decreaseAnimal = function(cb) {
   this.happiness -= 33;
   if(this.happiness < 1) {
     console.log('animal died in model');
-    //some function to kill it?
+    //delete it
   }
   this.health -= 33;
   if(this.health < 1) {
