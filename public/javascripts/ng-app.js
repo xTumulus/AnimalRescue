@@ -51,12 +51,12 @@ angular.module('animalRescue', [])
     };
 
     $scope.decreaseAnimal = setInterval(function() {
-      $scope.animalList.forEach(function(animal){
+      // $scope.animalList.forEach(function(animal){
         return $http.put('/animals/decrease')
         .success(function(data){
           $scope.animalList = data;
         });
-      })
+      // })
 
       // return $http.put('/animals/' + animal._id + '/decrease')
       // .success(function(data){
