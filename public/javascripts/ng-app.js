@@ -20,7 +20,7 @@ angular.module('animalRescue', [])
     $scope.getAnimalList = function() {
       return $http.get('/animals/')
       .success(function(data) {
-        console.log(data);
+        console.log(data + 'from the controller');
         var everything = "<ul>";
         for(var animal in data) {
           nml = data[animal];
