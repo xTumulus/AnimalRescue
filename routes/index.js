@@ -1,48 +1,62 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var Comment = mongoose.model('Comment');
+var animal = mongoose.model('animal');
 
-router.get('/comments', function(req, res, next) {
-  Comment.find(function(err, comments){
+// router.get('/animals', function(req, res, next) {
+//   animal.find(function(err, comments){
+//     if(err){ return next(err); }
+//     res.json(comments);
+//   });
+// });
+
+router.post('/animals', function(req, res, next) {
+  var tempAnimal = new animal(req.body);
+  animal.save(function(err, tempAnimal){
     if(err){ return next(err); }
-    res.json(comments);
+    res.json(tempAnimal);
   });
 });
 
-router.post('/comments', function(req, res, next) {
-  var comment = new Comment(req.body);
-  comment.save(function(err, comment){
-    if(err){ return next(err); }
-    res.json(comment);
-  });
-});
-
-router.param('comment', function(req, res, next, id) {
-  var query = Comment.findById(id);
-  query.exec(function (err, comment){
+router.param('animal', function(req, res, next, id) {
+  var query = animal.findById(id);
+  query.exec(function (err, animal){
     if (err) { return next(err); }
-    if (!comment) { return next(new Error("can't find comment")); }
-    req.comment = comment;
+    if (!animal) { return next(new Error("can't find animal")); }
+    req.animal = animal;
     return next();
   });
 });
 
-router.get('/comments/:comment', function(req, res) {
-  res.json(req.comment);
+router.get('/animals/:animal', function(req, res) {
+  res.json(req.animal);
 });
 
-router.put('/comments/:comment/upvote', function(req, res, next) {
-  req.comment.upvote(function(err, comment){
+router.put('/animals/:animal/feed', function(req, res, next) {
+  req.animal.feed(function(err, animal){
     if (err) { return next(err); }
-    res.json(comment);
+    res.json(animal);
   });
 });
 
-router.delete('/comments/:comment', function(req, res) {
-  console.log("in Delete");
-  req.comment.remove();
-  res.sendStatus(200);
+router.put('/animals/:animal/play', function(req, res, next) {
+  req.animal.play(function(err, animal){
+    if (err) { return next(err); }
+    res.json(animal);
+  });
 });
+
+router.put('/animals/:animal/decrease', function(req, res, next) {
+  req.animal.decrease(function(err, animal){
+    if (err) { return next(err); }
+    res.json(animal);
+  });
+});
+
+// router.delete('/comments/:comment', function(req, res) {
+//   console.log("in Delete");
+//   req.comment.remove();
+//   res.sendStatus(200);
+// });
 
 module.exports = router;

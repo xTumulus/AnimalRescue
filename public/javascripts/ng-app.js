@@ -1,52 +1,80 @@
-angular.module('comment', [])
+angular.module('animalRescue', [])
 .controller('MainCtrl', [
   '$scope', '$http',
   function($scope, $http){
-    $scope.test = 'Hello world!';
-    $scope.comments = [];
+    $scope.animalList = [];
 
-    $scope.addComment = function() {
+    $scope.addAnimal = function() {
       if($scope.formContent === '') { return; }
-      console.log("In addComment with "+$scope.formContent);
+      console.log("In addanimal with "+$scope.formContent);
       $scope.create({
-        title: $scope.formContent,
-        upvotes: 0,
+        name: $scope.formContent,
+        health: 100,
+        happiness: 100
       });
       $scope.formContent = '';
     };
 
-    $scope.upvote = function(comment) {
-      return $http.put('/comments/' + comment._id + '/upvote')
+    $scope.feed = function(animal) {
+      return $http.put('/animals/' + animal._id + '/feed')
       .success(function(data){
-         console.log("upvote worked");
-         comment.upvotes += 1;
+         console.log("animal fed");
+         animal.health += 33;
+         if(animal.health > 100) {
+           animal.health = 100;
+         }
       });
     };
 
-    $scope.incrementUpvotes = function(comment) {
-      $scope.upvote(comment);
-    };
 
-    $scope.getAll = function() {
-      return $http.get('/comments').success(function(data){
-        angular.copy(data, $scope.comments);
+    $scope.play = function(animal) {
+      return $http.put('/animals/' + animal._id + '/play')
+      .success(function(data){
+         console.log("animal played with");
+         animal.happiness += 33;
+         if(animal.happiness > 100) {
+           animal.happiness = 100;
+         }
       });
     };
 
-    $scope.getAll();
+    $scope.decrease = setInterval(function(animal) {
+      return $http.put('/animals/' + animal._id + '/decrease')
+      .success(function(data){
+         console.log("animal dying");
+         animal.happiness -= 33;
+         if(animal.happiness < 1) {
+           console.log('animal died');
+           //call some dead animal function
+         }
+         animal.health -= 33;
+         if(animal.health < 1) {
+           console.log('animal died');
+           //call some dead animal function
+         }
+      });
+    }, 10000);
 
-    $scope.create = function(comment) {
-      return $http.post('/comments', comment).success(function(data){
-        $scope.comments.push(data);
+    // $scope.getAll = function() {
+    //   return $http.get('/animals').success(function(data){
+    //     angular.copy(data, $scope.animals);
+    //   });
+    // };
+    //
+    // $scope.getAll();
+
+    $scope.create = function(animal) {
+      return $http.post('/animals', animal)
+      .success(function(data){
+        $scope.animalList.push(data);
       });
     };
 
-    $scope.delete = function(comment) {
-     $http.delete('/comments/' + comment._id )
+    $scope.delete = function(animal) {
+     $http.delete('/animals/' + animal._id )
       .success(function(data){
         console.log("delete worked");
       });
-     $scope.getAll();
     };
   }
 ]);
