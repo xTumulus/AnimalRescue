@@ -51,45 +51,11 @@ angular.module('animalRescue', [])
     };
 
     $scope.decreaseAnimal = setInterval(function() {
-      // $scope.animalList.forEach(function(animal){
         return $http.put('/animals/decrease')
         .success(function(data){
           $scope.animalList = data;
         });
-      // })
-
-      // return $http.put('/animals/' + animal._id + '/decrease')
-      // .success(function(data){
-      //   for(var nml in data) {
-      //     Animal = data[nml];
-      //     console.log("animal dying");
-      //     animal.happiness -= 33;
-      //     if(animal.happiness < 1) {
-      //       console.log('animal died');
-      //       $scope.delete(animal);
-      //      }
-      //     animal.health -= 33;
-      //     if(animal.health < 1) {
-      //       console.log('animal died');
-      //       $scope.delete(animal);
-      //     }
-      //     animal.days += 1;
-      //     if(animal.days >= 30) {
-      //       console.log('animal saved');
-      //       $scope.animalsSaved += 1;
-      //       $scope.delete(animal);           
-      //     }
-      //   }
-      // });
     }, 10000);
-
-    // $scope.getAll = function() {
-    //   return $http.get('/animals').success(function(data){
-    //     angular.copy(data, $scope.animals);
-    //   });
-    // };
-    //
-    // $scope.getAll();
 
     $scope.create = function(animal) {
       return $http.post('/animals', animal)
@@ -104,5 +70,7 @@ angular.module('animalRescue', [])
         console.log("delete worked");
       });
     };
+
+    $scope.getAnimalList();
   }
 ]);
