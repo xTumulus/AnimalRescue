@@ -59,12 +59,12 @@ db.once('open', function () {
 
 router.get('/animals', function(req, res, next){
   console.log('In GET animals route');
-  animal.find(function(err,animalList) {
+  animal.find(function(err,animals) {
     if (err) return console.error(err);
     else {
-      console.log(animalList);
+      console.log(animals);
     }
-    res.json(animalList);
+    res.json(animals);
   })
 });
 
