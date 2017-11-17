@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://http://ec2-34-210-196-164.us-west-2.compute.amazonaws.com/animalDB', { useMongoClient: true});
+mongoose.connect('mongodb://localhost/animalDB', { useMongoClient: true});
 
 var animalSchema = new mongoose.Schema({
   name: String,
