@@ -106,26 +106,26 @@ router.put('/animals/:animal/play', function(req, res, next) {
   });
 });
 
-// router.put('/animals/:animal/decreaseAnimal', function(req, res, next) {
-//   req.animal.decreaseAnimal(function(err, animal){
-//     if (err) { return next(err); }
-//     res.json(animal);
-//   });
-// });
-
-router.put('/animals/decreaseAnimal', function(req, res, next) {
-  var count;
-  animal.find(function(err,animals) {
-    animals.forEach(function(animal,index){
-      animal.decreaseAnimal(function(err, animal){
-        if(err) { return next(err); }
-        if(count++ === animals.length){
-          res.json(animals);
-        }
-      });
-    })
-  })
+router.put('/animals/:animal/decreaseAnimal', function(req, res, next) {
+  req.animal.decreaseAnimal(function(err, animal){
+    if (err) { return next(err); }
+    res.json(animal);
+  });
 });
+
+// router.put('/animals/decreaseAnimal', function(req, res, next) {
+//   var count;
+//   animal.find(function(err,animals) {
+//     animals.forEach(function(animal,index){
+//       animal.decreaseAnimal(function(err, animal){
+//         if(err) { return next(err); }
+//         if(count++ === animals.length){
+//           res.json(animals);
+//         }
+//       });
+//     })
+//   })
+// });
 
 router.delete('/animals/:animal', function(req, res) {
   console.log("in Delete");
