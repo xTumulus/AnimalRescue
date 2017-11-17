@@ -16,8 +16,9 @@ angular.module('animalRescue', [])
       $scope.formContent = '';
     };
 
-    $scope.getAnimalList= function() {
-      return $http.get('/animals/', function(data) {
+    $scope.getAnimalList = function() {
+      return $http.get('/animals/')
+      .success(function(data) {
         console.log(data);
         var everything = "<ul>";
         for(var animal in data) {
