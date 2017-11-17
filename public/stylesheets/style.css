@@ -55,14 +55,22 @@ button {
 }
 
 button {
-  color: white;
   background-color: rgba(129, 244, 153, 1);
+}
+
+div {
+  border-radius: 4px;
 }
 
 .page-header {
   padding: 10px;
   background-color: rgba(129, 244, 153, 1);
   width: 100%;
+}
+
+.animal-form {
+  display: flex;
+  flex-direction: row;
 }
 
 .animal-container {
