@@ -17,11 +17,11 @@ angular.module('animalRescue', [])
     };
 
     $scope.getAnimalList= function() {
-      $.getJSON('animal', function(data) {
+      return $http.get('/animals/', function(data) {
         console.log(data);
         var everything = "<ul>";
-        for(var comment in data) {
-          nml = data[comment];
+        for(var animal in data) {
+          nml = data[animal];
           everything += "<li> Name: " + nml.name + "</li>";
         }
         everything += "</ul>";
