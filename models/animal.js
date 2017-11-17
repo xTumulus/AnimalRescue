@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
 
-var animal = new mongoose.Schema({
+var animalSchema = new mongoose.Schema({
   name: String,
   health: {type: Number, default: 100},
   happiness: {type: Number, default: 100},
 });
 
-animal.methods.feed = function(cb) {
+animalSchema.methods.feed = function(cb) {
   this.health += 33;
   if(this.health > 100) {
     this.health = 100;
@@ -14,7 +14,7 @@ animal.methods.feed = function(cb) {
   this.save(cb);
 };
 
-animal.methods.play = function(cb) {
+animalSchema.methods.play = function(cb) {
   this.happiness += 33;
   if(this.happiness > 100) {
     this.happiness = 100;
@@ -22,7 +22,7 @@ animal.methods.play = function(cb) {
   this.save(cb);
 };
 
-animal.methods.decrease = function(cb) {
+animalSchema.methods.decrease = function(cb) {
   this.happiness -= 33;
   if(this.happiness < 1) {
     console.log('animal died in model');
