@@ -6,7 +6,7 @@ angular.module('animalRescue', [])
     $scope.animalsSaved; 
 
     $scope.addAnimal = function() {
-      if($scope.formContent === '') { return; }
+      if($scope.formContent === '') { return; };
       console.log("In addanimal with "+$scope.formContent);
       $scope.create({
         name: $scope.formContent,
@@ -21,14 +21,10 @@ angular.module('animalRescue', [])
       return $http.get('/animals/')
       .success(function(data) {
         console.log(data + 'from the controller');
-        // var everything = "<div class='animals-container'>";
         for(var animal in data) {
           nml = data[animal];
           $scope.animalList.push(nml);
-          // everything += "<div class='animal'> <p>Name: " + nml.name + "</p> <p>" +nml.;
         }
-        // everything += "</ul>";
-        // document.getElementById("animals").innerHTML = everything;
       })
     };
 
@@ -91,7 +87,7 @@ angular.module('animalRescue', [])
     $scope.create = function(animal) {
       return $http.post('/animals', animal)
       .success(function(data){
-        $scope.animalList.push(data);
+        // $scope.animalList.push(data);
       });
     };
 
