@@ -55,7 +55,7 @@ angular.module('animalRescue', [])
 
     $scope.decreaseAnimal = setInterval(function() {
       console.log('running decreaseAnimal');
-        return $http.put('/animals/:animal/decreaseAnimal')
+        return $http.put('/animals/decreaseAnimal')
         .success(function(data){
           $scope.animalList = data;
           $scope.getAnimalList();
