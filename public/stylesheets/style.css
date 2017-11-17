@@ -19,12 +19,18 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Luckiest Guy', cursive;
 }
 
+.page-header {
+  background-color: rgba(129, 244, 153, 1);
+  width: 100%;
+}
+
 .animal-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  padding: 20px;
   max-height: 600px;
   max-width: 100%;
 }
