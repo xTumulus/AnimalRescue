@@ -115,7 +115,10 @@ router.put('/animals/:animal/decreaseAnimal', function(req, res, next) {
 
 router.put('/animals/decreaseAnimal', function(req, res, next) {
   var count;
-  animal.find(function(err,animals) {
+  var animals = req.body;
+  // animal.find(function(err,animals) {
+    console.log('decreasing animals');
+    console.log(animals);
     animals.forEach(function(animal,index){
       animal.decreaseAnimal(function(err, animal){
         if(err) { return next(err); }
@@ -123,8 +126,8 @@ router.put('/animals/decreaseAnimal', function(req, res, next) {
           res.json(animals);
         }
       });
-    })
-  })
+    });
+  // });
 });
 
 router.delete('/animals/:animal', function(req, res) {
