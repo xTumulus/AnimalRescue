@@ -39,7 +39,7 @@ angular.module('animalRescue', [])
     };
 
     $scope.decrease = setInterval(function(animal) {
-      return $http.put('/animals/' + animal._id + '/decrease')
+      return $http.put('/animals/' + animal.name + '/decrease')
       .success(function(data){
          console.log("animal dying");
          animal.happiness -= 33;
