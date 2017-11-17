@@ -106,8 +106,8 @@ router.put('/animals/:animal/play', function(req, res, next) {
   });
 });
 
-router.put('/animals/:animal/decrease', function(req, res, next) {
-  req.animal.decrease(function(err, animal){
+router.put('/animals/:animal/decreaseAnimal', function(req, res, next) {
+  req.animal.decreaseAnimal(function(err, animal){
     if (err) { return next(err); }
     res.json(animal);
   });
