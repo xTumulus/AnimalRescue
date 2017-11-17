@@ -21,13 +21,14 @@ angular.module('animalRescue', [])
       return $http.get('/animals/')
       .success(function(data) {
         console.log(data + 'from the controller');
-        var everything = "<ul>";
+        // var everything = "<div class='animals-container'>";
         for(var animal in data) {
           nml = data[animal];
-          everything += "<li> Name: " + nml.name + "</li>";
+          animalList.push(nml);
+          // everything += "<div class='animal'> <p>Name: " + nml.name + "</p> <p>" +nml.;
         }
-        everything += "</ul>";
-        document.getElementById("animals").innerHTML = everything;
+        // everything += "</ul>";
+        // document.getElementById("animals").innerHTML = everything;
       })
     };
 
