@@ -113,7 +113,7 @@ router.put('/animals/:animal/decreaseAnimal', function(req, res, next) {
   });
 });
 
-router.put('/animals/decrease', function(req, res, next) {
+router.put('/animals/decreaseAnimal', function(req, res, next) {
   var count;
   animal.find(function(err,animals) {
     animals.forEach(function(animal,index){
