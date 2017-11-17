@@ -5,8 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/animalDB',{useMongoClient:true});
-require('./models/animal');
+// mongoose.connect('mongodb://localhost/animalDB',{useMongoClient:true});
+// require('./models/animal');
 
 var routes = require('./routes/index');
 
