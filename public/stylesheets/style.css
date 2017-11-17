@@ -20,11 +20,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .page-header {
+  padding: 10px;
   background-color: rgba(129, 244, 153, 1);
   width: 100%;
 }
 
 .animal-container {
+  background-color: rgba(81, 113, 165, 1);
   display: flex;
   flex-direction: column;
   justify-content: center;
