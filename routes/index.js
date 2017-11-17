@@ -9,37 +9,37 @@ var animalSchema = new mongoose.Schema({
   happiness: {type: Number, default: 100},
 });
 
-// animalSchema.methods.feed = function(cb) {
-//   this.health += 33;
-//   console.log(this.health);
-//   if(this.health > 100) {
-//     this.health = 100;
-//   }
-//   this.save(cb);
-// };
+animalSchema.methods.feed = function(cb) {
+  this.health += 33;
+  console.log(this.health + 'in model');
+  if(this.health > 100) {
+    this.health = 100;
+  }
+  this.save(cb);
+};
 
-// animalSchema.methods.play = function(cb) {
-//   this.happiness += 33;
-//   console.log(this.happiness);
-//   if(this.happiness > 100) {
-//     this.happiness = 100;
-//   }
-//   this.save(cb);
-// };
+animalSchema.methods.play = function(cb) {
+  this.happiness += 33;
+  console.log(this.happiness + 'in model');
+  if(this.happiness > 100) {
+    this.happiness = 100;
+  }
+  this.save(cb);
+};
 
-// animalSchema.methods.decreaseAnimal = function(cb) {
-//   this.happiness -= 33;
-//   if(this.happiness < 1) {
-//     console.log('animal died in model');
-//     //some function to kill it?
-//   }
-//   this.health -= 33;
-//   if(this.health < 1) {
-//     console.log('animal died in model');
-//     //some function to kill it?
-//   }
-//   this.save(cb);
-// };
+animalSchema.methods.decreaseAnimal = function(cb) {
+  this.happiness -= 33;
+  if(this.happiness < 1) {
+    console.log('animal died in model');
+    //some function to kill it?
+  }
+  this.health -= 33;
+  if(this.health < 1) {
+    console.log('animal died in model');
+    //some function to kill it?
+  }
+  this.save(cb);
+};
 
 var animal = mongoose.model('animal', animalSchema);
 
