@@ -27,7 +27,7 @@ angular.module('animalRescue', [])
           everything += "<li> Name: " + nml.name + "</li>";
         }
         everything += "</ul>";
-        $("#animals").html(everything);
+        document.getElementById("animals").html(everything);
       })
     };
 
