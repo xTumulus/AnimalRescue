@@ -7,6 +7,11 @@ angular.module('animalRescue', [])
 
     $scope.addAnimal = function() {
       if($scope.formContent === '') { return; };
+      if($scope.animalList.length > 19) { 
+        //do something to say "that is too many animals"
+        console.log('that is too many animals');
+        return; 
+      }
       console.log("In addanimal with "+$scope.formContent);
       $scope.create({
         name: $scope.formContent,
@@ -65,11 +70,6 @@ angular.module('animalRescue', [])
             }
           });
       });
-        // return $http.put('/animals/decreaseAnimal',animals)
-        // .success(function(data){
-        //   $scope.animalList = data;
-        //   $scope.getAnimalList();
-        // });
     }, 10000);
 
     $scope.create = function(animal) {

@@ -32,18 +32,20 @@ animalSchema.methods.decreaseAnimal = function(cb) {
   this.happiness -= 33;
   if(this.happiness < 1) {
     console.log('animal died in model');
-    //delete it
+    //Display this on the screen
+    this.remove();
   }
   this.health -= 33;
   if(this.health < 1) {
     console.log('animal died in model');
-    //some function to kill it?
+    //Display this on the screen
+    this.remove();    
   }
   this.days += 1;
   if(this.days >= 30) {
     console.log('animal rescued and returned to wild');
-    //some function to log that it was saved
-    //still call delete
+    //log this on the screen    
+    this.remove();    
   }
   this.save(cb);
 };
